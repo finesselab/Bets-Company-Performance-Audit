@@ -1,0 +1,39 @@
+
+CREATE VIEW [dbo].[RFM_data] as 
+WITH AnalysisDate_CTE AS (
+    -- Determine the latest transaction date in the entire dataset to use as "Today" for Recency calculation
+    SELECT MAX([DATE]) AS AnalysisDate
+    FROM actions
+),
+CustomerAggregates AS (
+    SELECT
+        UT.USER_ID,
+        -- Recency: Days since the customer's last transaction (any type)
+        DATEDIFF(day, MAX(UT.[DATE]), (SELECT AnalysisDate FROM AnalysisDate_CTE)) AS Recency,
+
+        -- Frequency: Count of distinct days the customer made a 'BET' transaction
+        -- betting activity frequency
+        COUNT(DISTINCT CASE WHEN UT.ACTION_TYPE = 'BET' THEN UT.[DATE] ELSE NULL END) AS Frequency,
+
+        -- Monetary: Total sum of 'BET' amounts (stakes)
+        -- This represents the total value of bets placed by the user.
+        SUM(CASE WHEN UT.ACTION_TYPE = 'BET' THEN UT.AMOUNT ELSE 0 END) AS Monetary_TotalStakes
+    FROM
+        actions AS UT
+    GROUP BY
+        UT.USER_ID
+)
+
+-- Final selection of RFM metrics for each customer
+SELECT
+    CA.USER_ID,
+    CA.Recency,
+    CA.Frequency,
+    CA.Monetary_TotalStakes AS Monetary -- Using Total Stakes as the primary Monetary value
+FROM
+    CustomerAggregates AS CA
+--ORDER BY
+ --   CA.USER_ID;
+GO
+
+
