@@ -35,7 +35,7 @@ This repository contains an end-to-end data analytics, machine learning segmenta
 
 ---
 
-## 📊 Power BI Dashboard & Visual Analytics Suite
+## 📊 Power BI Dashboard
 
 ### Tab 1: Corporate Performance Overview
 * **Objective:** Tracks platform health metrics including Gross Gaming Revenue (GGR), Monthly Active Users (MAU) vs. corporate targets, and bet counts.
