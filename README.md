@@ -1,11 +1,11 @@
 # Bets Company Performance Audit
 
-## 📌 Project Overview
+## Project Overview
 This repository contains an end-to-end data analytics, machine learning segmentation, and behavioral retention pipeline developed for a sports betting and gaming platform. The project audits user transaction ledger data, builds advanced customer segmentation frameworks, tracks long-term cohort retention profiles, and integrates an AI-driven automated marketing recommendation engine directly into an interactive executive performance dashboard.
 
 ---
 
-## 🛠️ Data Pipeline & Architecture Workflow
+## Data Pipeline & Architecture Workflow
 
 ### 1. Data Engineering & ETL Pipeline (`1. ETL code 1.py`)
 * **Objective:** Ingest raw relational database tables (`USERS`, `ACTIONS`, `BONUS`) and map complex conditional ledger rules into analytics-ready dimensions.
@@ -35,7 +35,7 @@ This repository contains an end-to-end data analytics, machine learning segmenta
 
 ---
 
-## 📊 Power BI Dashboard
+## Power BI Dashboard
 
 ### Tab 1: Corporate Performance Overview
 * **Objective:** Tracks platform health metrics including Gross Gaming Revenue (GGR), Monthly Active Users (MAU) vs. corporate targets, and bet counts.
